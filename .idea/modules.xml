@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ThreadPrimeNumber.iml" filepath="$PROJECT_DIR$/.idea/modules/ThreadPrimeNumber.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ThreadPrimeNumber_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ThreadPrimeNumber_main.iml" group="ThreadPrimeNumber" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ThreadPrimeNumber_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ThreadPrimeNumber_test.iml" group="ThreadPrimeNumber" />
+    </modules>
+  </component>
+</project>
