@@ -5,12 +5,12 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 
 public class Main {
     private static int i = 3;
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         int d;
         int cnt;
         int noD;
@@ -18,14 +18,15 @@ public class Main {
         int threadNumber;
         List<String> sosu = null;
         ExecutorService executorService = Executors.newSingleThreadExecutor();
+        ExecutorService exec = Executors.newCachedThreadPool();
         try {
             sosu = Files.readAllLines(Paths.get("sosu.txt"), StandardCharsets.UTF_8);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (!(sosu.isEmpty())){
+        if (!(sosu.isEmpty())) {
             int sosuSize = sosu.size();
-            temp = sosu.get(sosuSize-1);
+            temp = sosu.get(sosuSize - 1);
             i = Integer.valueOf(temp);
             System.out.println(i);
         }
@@ -50,14 +51,17 @@ public class Main {
             }
             if (noD == 2) {
                 System.out.println(i);
-                executorService.submit(new TestRunnable());
+                executorService.submit(new write());
             }
             i++;
+            Future<Integer> ans1 = exec.submit(new sosu());
+            System.out.println(ans1.get());
         }
 
 
     }
-    public static class TestRunnable implements Runnable{
+
+    public static class write implements Runnable {
         @Override
         public void run() {
             try {
@@ -67,6 +71,14 @@ public class Main {
                 e.printStackTrace();
             }
 
+        }
+    }
+
+    public static class sosu implements Callable<Integer> {
+        @Override
+        public Integer call() throws Exception {
+            System.out.println(i);
+            return i;
         }
     }
 
