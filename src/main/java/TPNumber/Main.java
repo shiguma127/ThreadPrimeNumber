@@ -73,7 +73,7 @@ public class Main {
             if (i % 2 == 0 || i % 5 == 0 || i % 7 == 0) return null;
 
             int noD = 0;
-            for (int cnt = 1; cnt <= i; cnt++) {
+            for (int cnt = 1; cnt <= i; cnt=+2) {
                 if (i % cnt == 0) {
                     noD++;
                     if (noD > 2) {
@@ -81,7 +81,7 @@ public class Main {
                     }
                 }
             }
-            if (noD != 2) return null;
+            if (!(noD <= 2)) return null;
             return i;
         }
     }
